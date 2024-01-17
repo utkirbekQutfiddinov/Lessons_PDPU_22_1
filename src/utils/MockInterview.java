@@ -9,11 +9,10 @@ public class MockInterview {
                 "Abdulmajid Abdulmalikov",
                 "Zinnurbek Ahrorov",
                 "Xamraliyev Aziz",
-                "Fayzullo 65",
+                "Fayzullo Abdulazizov",
                 "Azizbek Qudratov",
                 "Saidov Muhammadjon",
                 "Xusanboy Ahmedov",
-                "Maxametov Abduraxmon",
                 "Muhammadiso A'zamov"
         };
 
