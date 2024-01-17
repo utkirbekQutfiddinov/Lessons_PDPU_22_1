@@ -1,4 +1,4 @@
-package lesson_4_4;
+package module_4.lesson_4_4;
 
 /**
  * 1. make class as final

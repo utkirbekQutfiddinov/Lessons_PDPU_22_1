@@ -1,7 +1,6 @@
-package lesson_4_4;
+package module_4.lesson_4_4;
 
 import java.util.*;
-import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentLinkedQueue;
 import java.util.concurrent.ConcurrentSkipListSet;
 
