@@ -1,3 +1,5 @@
+package module_4.lesson_4_2;
+
 import deadlock.Thread1;
 
 import java.util.concurrent.locks.Lock;
