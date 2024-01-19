@@ -12,12 +12,12 @@ public class MockInterview {
                 "Fayzullo Abdulazizov",
                 "Azizbek Qudratov",
                 "Saidov Muhammadjon",
-                "Xusanboy Ahmedov",
-                "Muhammadiso A'zamov"
+                "Muhammadiso A'zamov",
+                "Xusanboy Ahmedov"
         };
 
         Random rand=new Random();
-        int a= rand.nextInt(10);
+        int a= rand.nextInt(9);
         System.out.println(names[a]);
 
     }
