@@ -9,7 +9,7 @@ public class SingletonRandom {
 
     public static Random getInstance(){
         if(instance==null){
-            synchronized (instance){
+            synchronized (SingletonRandom.class){
                 if(instance==null){
                     instance=new Random();
                 }

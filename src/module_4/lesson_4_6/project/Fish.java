@@ -2,8 +2,8 @@ package module_4.lesson_4_6.project;
 
 import java.util.Random;
 
-public class Fish implements Runnable{
-    private Random rand=SingletonRandom.getInstance();
+public class Fish implements Runnable {
+    private Random rand = SingletonRandom.getInstance();
     private int x;
     private int y;
     private long birthDate;
@@ -11,19 +11,38 @@ public class Fish implements Runnable{
     private boolean isAdult;
     private long period;
     private boolean isDead;
+    private boolean canBreed=true;
+    private long lastBreedTime;
 
-    public Fish(){
-        birthDate=System.currentTimeMillis();
-        this.isMale=rand.nextBoolean();
-        //TODO: period is random between 1000 and 5000
+    public Fish() {
+        birthDate = System.currentTimeMillis();
+        this.isMale = Math.random()*2>=1;
+        this.period = rand.nextInt(10000, 50000);
     }
 
     @Override
     public void run() {
-        while(!isDead){
-            //TODO: is birthdate+period>=current
-            //TODO: sleep this thread: sleeping time is random between 100 and 200
-            //TODO: set new x,y values they are also random
+        while (!isDead) {
+            if (System.currentTimeMillis() > (birthDate + period / 5)) {
+                isAdult = true;
+            }
+            if (System.currentTimeMillis() >= birthDate + period) {
+                isDead = true;
+                break;
+            }
+            if (isAdult && System.currentTimeMillis() > (lastBreedTime + period / 5)) {
+                canBreed = true;
+            }
+
+            try {
+                Thread.sleep(rand.nextInt(10, 100));
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+            int x=rand.nextInt(1,10);
+            int y=rand.nextInt(1,10);
+            this.setX(x);
+            this.setY(y);
         }
     }
 
@@ -33,6 +52,22 @@ public class Fish implements Runnable{
 
     public void setRand(Random rand) {
         this.rand = rand;
+    }
+
+    public boolean isCanBreed() {
+        return canBreed;
+    }
+
+    public void setCanBreed(boolean canBreed) {
+        this.canBreed = canBreed;
+    }
+
+    public long getLastBreedTime() {
+        return lastBreedTime;
+    }
+
+    public void setLastBreedTime(long lastBreedTime) {
+        this.lastBreedTime = lastBreedTime;
     }
 
     public int getX() {
@@ -89,5 +124,16 @@ public class Fish implements Runnable{
 
     public void setDead(boolean dead) {
         isDead = dead;
+    }
+
+    @Override
+    public String toString() {
+        return "Fish{" +
+                "x=" + x +
+                ", y=" + y +
+                ", isMale=" + isMale +
+                ", isAdult=" + isAdult +
+                ", isDead=" + isDead +
+                '}';
     }
 }
