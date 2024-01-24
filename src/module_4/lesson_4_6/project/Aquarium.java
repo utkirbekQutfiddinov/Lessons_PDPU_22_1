@@ -8,17 +8,16 @@ import java.util.Random;
 public class Aquarium implements Runnable {
     private List<Fish> fishlar = new ArrayList<>();
     private List<Fish> fish= Collections.synchronizedList(fishlar);
-    private final int MAX_SIZE = 10_000;
+    private final int MAX_SIZE = 100;
     private final int MIN_SIZE = 0;
     private Random rand = SingletonRandom.getInstance();
 
 
     @Override
     public void run() {
-        birthOfNewFishes(rand.nextInt(1000, 10000));
+        birthOfNewFishes(rand.nextInt(50,100));
 
         while (fish.size() <= MAX_SIZE && fish.size() > MIN_SIZE) {
-            reportFishSize();
             for (int i = 0; i < fish.size(); i++) {
                 Fish f1 = fish.get(i);
 
@@ -29,7 +28,7 @@ public class Aquarium implements Runnable {
                 }
 
                 for (int j = 0; j < fish.size(); j++) {
-                    Fish f2 = fish.get(i);
+                    Fish f2 = fish.get(j);
 
                     if (f2.isDead()) {
                         fish.remove(f2);
@@ -39,7 +38,7 @@ public class Aquarium implements Runnable {
 
 
                     if (i!=j&&f1.isAdult() && f2.isAdult()
-//                            && f1.isMale() != f2.isMale()
+                            && f1.isMale() != f2.isMale()
                             && f1.getX() == f2.getX()
                             && f1.getY() == f2.getY()
                             && f1.isCanBreed()&&f2.isCanBreed()
@@ -49,15 +48,16 @@ public class Aquarium implements Runnable {
                         f1.setCanBreed(false);
                         f2.setCanBreed(false);
                         if(f1.isMale()!=f2.isMale())
-                        birthOfNewFishes(rand.nextInt(10, 20));
+                        birthOfNewFishes(rand.nextInt(1, 10));
                     }
                 }
             }
             try {
-                Thread.sleep(rand.nextInt(100, 200));
+                Thread.sleep(rand.nextInt(10, 20));
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
+            reportFishSize();
         }
     }
 
@@ -68,6 +68,7 @@ public class Aquarium implements Runnable {
             fish.add(newFish);
         }
         System.out.println("New fishes count: " + count);
+        System.out.println("*****************************");
     }
 
     private void reportFishSize() {
@@ -92,5 +93,6 @@ public class Aquarium implements Runnable {
                 ",\n" + "Male count: " + maleCount +
                 "\nFemale count: " + (fish.size() - maleCount) +
                 "\nAdult count: " + adultCount + "\nDead count: " + deadCount);
+        System.out.println("********************************************");
     }
 }

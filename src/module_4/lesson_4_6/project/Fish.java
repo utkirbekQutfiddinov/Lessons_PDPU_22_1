@@ -4,8 +4,8 @@ import java.util.Random;
 
 public class Fish implements Runnable {
     private Random rand = SingletonRandom.getInstance();
-    private Integer x;
-    private Integer y;
+    private int x;
+    private int y;
     private long birthDate;
     private boolean isMale;
     private boolean isAdult;
@@ -41,8 +41,8 @@ public class Fish implements Runnable {
             }
             int x=rand.nextInt(1,10);
             int y=rand.nextInt(1,10);
-            this.setX(1);
-            this.setY(1);
+            this.setX(x);
+            this.setY(y);
         }
     }
 
