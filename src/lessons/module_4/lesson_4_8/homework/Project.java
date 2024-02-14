@@ -55,10 +55,10 @@ public class Project {
 
         Path subPath=currentPath.resolve(subFolder);
 
-        if (!subPath.isAbsolute()) {
-            System.out.println("Error");
-        }else {
+        if (subPath.toFile().isDirectory()) {
             currentPath=subPath;
+        }else {
+            System.out.println("Error");
         }
     }
 
