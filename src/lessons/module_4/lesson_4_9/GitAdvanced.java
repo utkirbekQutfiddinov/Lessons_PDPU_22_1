@@ -14,7 +14,7 @@ public class GitAdvanced {
          * git checkout <branchName>
          * git status
          * git log, git log --oneline
-         *
+         * git rebase -i HEAD~1
          *
          *
          *
