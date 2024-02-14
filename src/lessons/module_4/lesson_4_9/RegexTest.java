@@ -27,7 +27,7 @@ public class RegexTest {
 
         \d digit
         \D non-digit
-        \w word
+        \w word: [a-zA-Z0-9_]
         \W non-word
         \s space
         \S non-space
