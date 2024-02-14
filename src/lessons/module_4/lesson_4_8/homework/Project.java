@@ -1,6 +1,7 @@
 package lessons.module_4.lesson_4_8.homework;
 
 import java.io.*;
+import java.nio.file.Path;
 import java.util.Scanner;
 
 public class Project {
@@ -12,11 +13,13 @@ public class Project {
      * 5) delete folder/file
      * 6) rename file/folder
      */
-    static StringBuilder currentPath = new StringBuilder("C:/");
+    static Path currentPath = Path.of("C:/");
     static Scanner sc = new Scanner(System.in);
 
     public static void main(String[] args) {
         System.out.println("Welcome! ");
+        //1. Windows
+        //2. linux
 
         String cmd = "";
         while (!cmd.equals("quit") && !cmd.equals("exit")) {
@@ -35,10 +38,8 @@ public class Project {
                     if(cmd.startsWith("cd ")){
                         String subFolder = cmd.split(" ")[1];
 
-                        if(subFolder.equals("../")){
-                            int last = currentPath.lastIndexOf("/");
-
-                            currentPath=new StringBuilder(currentPath.toString().substring(0,last));
+                        if(subFolder.startsWith("..")){
+                            currentPath=currentPath.getParent();
                         }else {
                             gotoFolder(subFolder);
                         }
@@ -51,13 +52,13 @@ public class Project {
     }
 
     private static void gotoFolder(String subFolder) {
-        File file=new File(currentPath+"/"+ subFolder);
 
+        Path subPath=currentPath.resolve(subFolder);
 
-        if (!file.isDirectory()) {
+        if (!subPath.isAbsolute()) {
             System.out.println("Error");
         }else {
-            currentPath.append("/").append(subFolder);
+            currentPath=subPath;
         }
     }
 
