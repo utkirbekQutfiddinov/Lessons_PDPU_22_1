@@ -2,4 +2,4 @@
 /out/
 .idea
 Lessons.iml
-utis/Test.java
+src/main/java/utils/Test.java
