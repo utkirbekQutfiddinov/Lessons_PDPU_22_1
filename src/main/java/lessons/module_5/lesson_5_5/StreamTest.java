@@ -1,9 +1,7 @@
 package main.java.lessons.module_5.lesson_5_5;
 
-import java.lang.reflect.Array;
 import java.util.Arrays;
 import java.util.List;
-import java.util.Random;
 import java.util.function.Consumer;
 import java.util.stream.IntStream;
 import java.util.stream.Stream;
@@ -22,17 +20,17 @@ public class StreamTest {
 //        Stream<Integer> st3=Stream.iterate(0,(i)->i+2);
 
 //stream fromn collections
-        List<Integer> nums=List.of(1,12,3,4);
-        Stream<Integer> st4=nums.stream();
-        Stream<Integer> st5=nums.parallelStream();
+        List<Integer> nums = List.of(1, 12, 3, 4);
+        Stream<Integer> st4 = nums.stream();
+        Stream<Integer> st5 = nums.parallelStream();
 
 
         //stream from arrays
-        int[] nums1=new int[]{1,2,3};
+        int[] nums1 = new int[]{1, 2, 3};
         IntStream st6 = Arrays.stream(nums1);
 
         //stream via factory method
-        Stream<Integer> st7=Stream.of(1,2,3);
+        Stream<Integer> st7 = Stream.of(1, 2, 3);
     }
 
     private static void operatorsTest() {
