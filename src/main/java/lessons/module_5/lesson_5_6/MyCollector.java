@@ -1,7 +1,6 @@
 package main.java.lessons.module_5.lesson_5_6;
 
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 import java.util.function.BiConsumer;
@@ -23,7 +22,7 @@ public class MyCollector implements Collector<Student, List<Student>, List<Stude
 
     @Override
     public BinaryOperator<List<Student>> combiner() {
-        return (set1,set2)->{
+        return (set1, set2) -> {
             set1.addAll(set2);
             return set1;
         };
