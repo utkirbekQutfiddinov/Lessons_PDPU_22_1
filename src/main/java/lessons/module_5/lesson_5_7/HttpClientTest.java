@@ -48,9 +48,10 @@ public class HttpClientTest {
          */
 
 
-//        System.out.println(new String(Base64.getDecoder().decode("dXRraXJiZWs5OkViellsUVlDUmI=".getBytes())));
 
+    }
 
+    private static void getWithParamsAndAuth() throws URISyntaxException, IOException, InterruptedException {
         //get with params
         String url="http://localhost:8082/trainees";
         Map<String,String> paramsMap=Map.of("username","utkirbek","password","123");
